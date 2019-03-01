@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="module" src="dist/view.js"></script>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+        .wrapper {
+            width: 100%;
+            height: 75%
+        }
+        .controls {
+            background: lightgray;
+            border-top: 1px solid gray;
+            border-bottom: 1px solid gray;
+            padding: 24px;
+        }
+    </style>
+    <script>
+        var webComponent;
+        document.addEventListener("DOMContentLoaded", function(event) {
+            webComponent = document.querySelector('x-view')
+        });
+    </script>
+</head>
+<body>
+<div class="wrapper">
+    <x-view minBubbleSize="5"
+            maxBubbleSize="20"
+            drawingInterval="10"
+            removalInterval="10000"
+            bubbleColor="#000000"
+            bubbleOpacity="0.1"></x-view>
+
+    <script src="jscolor.js"></script>
+</div>
+<div class="controls">
+
+
+    minBubbleSize:   <input type="number"
+                            value="5"
+                            min="0"
+                            onchange="webComponent.setAttribute('minBubbleSize', this.value)"/>
+    maxBubbleSize:   <input type="number"
+                            value="20"
+                            min="0"
+                            onchange="webComponent.setAttribute('maxBubbleSize', this.value)"/>
+    drawingInterval: <input type="number"
+                            value="10"
+                            min="0"
+                            onchange="webComponent.setAttribute('drawingInterval', this.value)"/>
+    removalInterval: <input type="number"
+                            value="10000"
+                            min="0"
+                            onchange="webComponent.setAttribute('removalInterval', this.value)"/>
+    bubbleColor:     <input class="jscolor"
+                            value="000000"
+                            onchange="webComponent.setAttribute('bubbleColor', '#' + this.value)">
+    bubbleOpacity:   <input type="number"
+                            value="0.1"
+                            min="0"
+                            max="1"
+                            step="0.025"
+                            onchange="webComponent.setAttribute('bubbleOpacity', this.value)"/>
+    bubbleBorder:    <input type="checkbox"
+                            onchange="this.checked ? webComponent.setAttribute('bubbleBorder', this.checked) : webComponent.removeAttribute('bubbleBorder')"/>
+    <button onclick="webComponent.setAttribute('clear', '')">clear canvas</button>
+</div>
+</body>
+</html>

@@ -1,17 +1,12 @@
-import { View } from './view.js';
+import { View } from './view';
 
 customElements.define('x-view', View);
 
 const { assert } = chai;
 
 describe('View', () => {
-  it('has a default name', () => {
+  it('exists', () => {
     const view = new View();
-    assert.equal(view.name, 'view');
-  });
-
-  it('has another name', () => {
-    const view = new View();
-    assert.equal(view.otherName, 'foo');
+    assert.notEqual(view, null);
   });
 });
