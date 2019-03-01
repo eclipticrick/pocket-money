@@ -17,10 +17,11 @@ module.exports = function(config) {
     reporters: ['progress', 'karma-typescript'],
     karmaTypescriptConfig: {
       compilerOptions: {
-        target: "es5",
+        target: "es5"
       },
       exclude: [
         'node_modules',
+        '*.test.ts',
         '*_test.ts'
       ],
       coverageOptions: {

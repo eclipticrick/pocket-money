@@ -25,7 +25,7 @@ template.innerHTML = `
   <div id='target'>click to draw!</div>
 `;
 
-export class View extends HTMLElement {
+export class Canvas extends HTMLElement {
   root: ShadowRoot;
   targetEl: HTMLElement;
   interval: any;
@@ -227,4 +227,4 @@ export class View extends HTMLElement {
   }
 }
 
-customElements.define('x-view', View);
+customElements.define('x-view', Canvas);
