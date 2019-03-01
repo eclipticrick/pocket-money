@@ -22,7 +22,11 @@
         }
     </style>
     <script>
-        var webComponent;
+        import { Canvas } from './dist/view.js';
+
+        customElements.define('x-canvas', Canvas);
+
+        let webComponent;
         document.addEventListener("DOMContentLoaded", function(event) {
             webComponent = document.querySelector('x-canvas')
         });

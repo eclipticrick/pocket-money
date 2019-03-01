@@ -226,5 +226,3 @@ export class Canvas extends HTMLElement {
     }
   }
 }
-
-customElements.define('x-view', Canvas);
