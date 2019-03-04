@@ -26,8 +26,7 @@ module.exports = function(config) {
       ],
       coverageOptions: {
         exclude: [
-          /_test\.ts$/,
-          /.test\.ts$/
+          /[._](spec|test)\.ts/i
         ]
       }
     },

@@ -25,8 +25,7 @@ template.innerHTML = `
   <div id='target'>click to draw!</div>
 `;
 
-export class Canvas extends HTMLElement {
-  root: ShadowRoot;
+export class CanvasComponent extends HTMLElement {
   targetEl: HTMLElement;
   interval: any;
   isDrawing: boolean;
@@ -36,10 +35,13 @@ export class Canvas extends HTMLElement {
 
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: 'open' });
-    shadowRoot.appendChild(template.content.cloneNode(true));
-    this.root = shadowRoot;
-    this.targetEl = shadowRoot.getElementById('target');
+    this.attachShadow({ mode: 'open' });
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
+    this.targetEl = this.shadowRoot.getElementById('target');
+  }
+
+  static get tag() {
+    return 'x-canvas';
   }
 
   static get observedAttributes() {
@@ -71,6 +73,8 @@ export class Canvas extends HTMLElement {
   }
 
   disconnectedCallback() {
+    this.removeEventListener('mousedown', this.onMouseDown);
+    this.removeEventListener('mouseup', this.onMouseUp);
     this.removeEventListener('mousemove', this.onMouseMove);
     this.removeEventListener('mouseout', this.onMouseOut);
   }
@@ -78,35 +82,8 @@ export class Canvas extends HTMLElement {
   attributeChangedCallback(attrName: string, oldVal, newVal) {
     console.log('attributeChangedCallback', attrName, oldVal, newVal);
     if (attrName === 'clear') {
-      console.log('clear!!')
       this.clearCanvas();
     }
-    // if (attrName === 'maxBubbleSize') {
-    //
-    // }
-    // if (attrName === 'drawingInterval') {
-    //
-    // }
-    // if (attrName === 'removalInterval') {
-    //
-    // }
-    // if (attrName === 'bubbleColor') {
-    //
-    // }
-    // if (attrName === 'bubbleOpacity') {
-    //
-    // }
-    // if (attrName === 'bubbleBorder') {
-    //
-    // }
-    // if (attrName === 'tabindex') {
-    //   const [ oldVal, newVal ] = change as string[];
-    //   if (oldVal !== '1' && newVal === '1') {
-    //     this.target.innerText = 'Press any Key!';
-    //   } else if (oldVal === '1' && newVal !== '1') {
-    //     this.target.innerText = 'Click me!';
-    //   }
-    // }
   }
 
   private setDefaultAttributes(defaults): void {

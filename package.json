@@ -1,13 +1,13 @@
 {
-  "name": "pocket-money",
+  "name": "drawing-canvas",
   "version": "1.0.0",
-  "description": "Trackin' your pennies",
+  "description": "Drawing canvas (without the canvas element)",
   "jsnext:main": "dist/thing.js",
   "scripts": {
     "build": "rimraf dist && tsc",
     "test": "karma start"
   },
-  "author": "Paul Lewis",
+  "author": "Wesley Veenendaal",
   "license": "MIT",
   "devDependencies": {
     "@types/chai": "^4.1.7",

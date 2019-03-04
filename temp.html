@@ -3,7 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script type="module" src="dist/view.js"></script>
+    <script type="module" src="./dist/canvas.js"></script>
+    <script type="module">
+        'use strict';
+        import { CanvasComponent } from './dist/canvas.js';
+        customElements.define(CanvasComponent.tag, CanvasComponent);
+    </script>
+    <script>
+        var webComponent;
+        document.addEventListener("DOMContentLoaded", function(event) {
+            webComponent = document.querySelector('x-canvas');
+        });
+    </script>
     <style>
         html, body {
             width: 100%;
@@ -21,25 +32,15 @@
             padding: 24px;
         }
     </style>
-    <script>
-        import { Canvas } from './dist/view.js';
-
-        customElements.define('x-canvas', Canvas);
-
-        let webComponent;
-        document.addEventListener("DOMContentLoaded", function(event) {
-            webComponent = document.querySelector('x-canvas')
-        });
-    </script>
 </head>
 <body>
 <div class="wrapper">
     <x-canvas minBubbleSize="5"
-            maxBubbleSize="20"
-            drawingInterval="10"
-            removalInterval="10000"
-            bubbleColor="#000000"
-            bubbleOpacity="0.1"></x-canvas>
+              maxBubbleSize="20"
+              drawingInterval="10"
+              removalInterval="10000"
+              bubbleColor="#000000"
+              bubbleOpacity="0.1"></x-canvas>
 
     <script src="temp_jscolor.js"></script>
 </div>
